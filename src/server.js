@@ -1,20 +1,12 @@
 const express = require('express')
 
 const app = express()
+app.use(express.json())
 
-app.get('/product/:id/:user', (request, response) => {
-  const { id, user } = request.params
-  response.send(` 
-    Product id: ${id}. 
-    For user: ${user}. `)
-})
-
-app.get('/users/', (request, response) => {
-  const { page, limit } = request.query
-  response.send(`
-  Page: ${page}.
-  Limit: ${limit}.
-  `)
+app.post('/users/', (request, response) => {
+  const { name, email, password } = request.body
+  /* response.json(`User: ${name} - Email: ${email} - Password: ${password}`) Devolve em HTML (Não é tão conveniente) */
+  response.json({ name, email, password }) // Devolve em formato JSON (Objeto) padrão mais conveniente em resposta de API
 })
 
 const PORT = 3333
