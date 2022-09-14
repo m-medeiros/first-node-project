@@ -2,12 +2,8 @@ const express = require('express')
 
 const app = express()
 
-app.get('/product/:id/:user', (request, response) => {
-  const { id, user } = request.params
-  response.send(`
-  Product id: ${id}.
-  For user: ${user}.
-  `)
+app.get('/message', (request, response) => {
+  response.send('Hello, world!')
 })
 
 const PORT = 3333
